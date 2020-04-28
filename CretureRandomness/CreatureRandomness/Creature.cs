@@ -44,7 +44,7 @@ namespace CretureRandomness
             {
                 if (Utilities.GetRandom(0,101) > Utilities.GetRandom(0, denial))
                 {
-                    denial += 500;
+                    denial += 300;
                     random = Utilities.GetRandom(0, powers.Count);
                     PrintDeterminatedType(powers[random]);
                     RemoveAllEqualPowers(powers[random]);
@@ -68,17 +68,15 @@ namespace CretureRandomness
         public void GenerateSkills()
         {
             List<string> skills = Utilities.GetSkills();
-            int denial = 101;
             foreach (string item in skills)
             {
-                if (Utilities.GetRandom(0,101) > Utilities.GetRandom(0, denial))
+                if (Utilities.GetRandom(0,101) > Utilities.GetRandom(0, 500))
                 {
-                    denial += 100;
-                    skillModel = new Skill(item, Utilities.GetRandom(0, 101));
+                    skillModel = new Skill(item, Utilities.GetRandom(51, 101));
                 }
                 else
                 {
-                    skillModel = new Skill(item, GetTop(Smarts));
+                    skillModel = new Skill(item, GetBotom(Smarts));
                 }
 
                 DeterminateSkillDetails();
@@ -89,41 +87,28 @@ namespace CretureRandomness
 
         private int GetBotom(int smarts)
         {
-            if (smarts > 90)
-            {
-                return Utilities.GetRandom(30, 100);
-            }
-            else if (smarts > 70)
-            {
-                return Utilities.GetRandom(20, 100);
-            }
-            else if (smarts > 30)
-            {
-                return Utilities.GetRandom(10, 100);
-            }
-            else
-            {
-                return Utilities.GetRandom(0, 100);
-            }
+            int result = smarts / 2;
+
+            return Utilities.GetRandom(0, result);
         }
 
         private int GetTop(int smarts)
         {
             if (smarts > 90)
             {
-                return Utilities.GetRandom(0, 101);
+                return Utilities.GetRandom(0, 81);
             }
             else if (smarts > 70)
             {
-                return Utilities.GetRandom(0, 76);
+                return Utilities.GetRandom(0, 71);
             }
             else if (smarts > 30)
             {
-                return Utilities.GetRandom(0, 51);
+                return Utilities.GetRandom(0, 61);
             }
             else
             {
-                return Utilities.GetRandom(0, 26);
+                return Utilities.GetRandom(0, 51);
             }
         }
 
