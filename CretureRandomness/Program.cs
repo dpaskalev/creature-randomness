@@ -8,13 +8,14 @@ namespace CretureRandomness
     {
         static void Main(string[] args)
         {
-            List<IGame> games = new List<IGame>();
-            FillGames(games);
+            List<IGame> games;
             
             int position = 1;
 
             while (true)
             {
+                games = new List<IGame>(GetGames());
+
                 PrintElements(position,games);
 
                 ConsoleKeyInfo input = Console.ReadKey();
@@ -82,13 +83,15 @@ namespace CretureRandomness
             Utilities.SetColor();
         }
 
-        static void FillGames(List<IGame> games)
+        static List<IGame> GetGames()
         {
-            CreatureRandomnessEngine creatureRandomness = new CreatureRandomnessEngine();
-            RandomNameEngine randomName = new RandomNameEngine();
+            List<IGame> gameList = new List<IGame>()
+            {
+                new CreatureRandomnessEngine(),
+                new RandomNameEngine()
+            };
 
-            games.Add(creatureRandomness);
-            games.Add(randomName);
+            return gameList;
         }
 
         static void PrintElements(int position,List<IGame> games)

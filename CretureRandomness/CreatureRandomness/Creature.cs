@@ -6,7 +6,7 @@ namespace CretureRandomness
     public class Creature
     {
         public List<Skill> skills = new List<Skill>();
-        public List<string> powers = Utilities.GetPowers();
+        public List<string> powers = new List<string>(Utilities.GetPowers());
         private Skill skillModel;
 
         private double baseSpeechSkill = 0;
