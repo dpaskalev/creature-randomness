@@ -106,6 +106,22 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
             { "Hipnosa","Comand"},
         };
 
+        private static readonly List<string> types = new List<string>
+        {
+            "Enhancer",
+            "Transmuter",
+            "Emiter",
+            "Manipulator",
+            "Conjurer",
+            "Enspecialist",
+            "Destructional",
+            "Alterational",
+            "Restorational",
+            "Conjurational",
+            "Illusional",
+            "Unique",
+        };
+
         public static int GetRandom(int bottom, int top)
         {
             Random random = new Random();
@@ -152,6 +168,11 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
             return perks[name];
         }
 
+        public static List<string> GetTypes()
+        {
+            return types;
+        }
+
         public static void SetColor(string mark = "")
         {
             if (GetIfDarkRed(mark))
@@ -185,7 +206,6 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
                 case "Ugly":
                 case "Stupid":
                 case "Weak":
-                case "Bad":
                 case "Skills":
                 case "Powers":
                 case "Base speech skill":
@@ -207,7 +227,6 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
                 case "Beautifull":
                 case "Genious":
                 case "Fit":
-                case "Good":
                     result = true;
                     break;
                 default:
@@ -226,15 +245,6 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
                 case "Ultimate":
                 case "Increadible":
                 case "Strong":
-                case "Master":
-                case "Invisibility":
-                case "ElectronicSlavery":
-                case "EnquipmentThieve":
-                case "DefenceIgnorence":
-                case "Alchemist":
-                case "AlienTech":
-                case "Syrena":
-                case "Paralisis":
                     result = true;
                     break;
                 default:
@@ -251,15 +261,6 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
             switch (mark)
             {
                 case "Normal":
-                case "MuffleMoovement":
-                case "Hacker":
-                case "AmmoThieve":
-                case "AimBot":
-                case "GarbageTransmute":
-                case "Electronics":
-                case "NoWeight":
-                case "Artist":
-                case "Herbivore":
                     result = true;
                     break;
                 default:

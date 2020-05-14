@@ -37,11 +37,11 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
 
             Console.WriteLine();
             PrintMessage("Powers");
-            PrintChance(Utilities.GetPowers());
+            PrintChance(new List<string>(Utilities.GetPowers()));
 
             Console.WriteLine();
             PrintMessage("Skills");
-            PrintChance(Utilities.GetSkills());
+            PrintChance(new List<string>(Utilities.GetSkills()));
 
             Console.WriteLine();
             PrintMessage("Base speech skill", $"{(baseSpeechSkill / speechDecimal):f2}");
@@ -87,25 +87,28 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
         {
             string name = "";
             string perk = "";
+            int random = 0;
+            int denial = 101;
 
-            while (true)
+            while (colection.Count > 0)
             {
-                if (Utilities.GetRandom(0,101) > Utilities.GetRandom(0,301))
+                if (Utilities.GetRandom(0,101) > Utilities.GetRandom(0,denial))
                 {
-                    name = colection[Utilities.GetRandom(0, colection.Count)];
+                    denial += 200;
 
-                    if (Utilities.GetRandom(0,101) > Utilities.GetRandom(0,301))
-                    {
-                        perk = Utilities.GetPerk(name);
-                    }
+                    random = Utilities.GetRandom(0, colection.Count);
+                    name = colection[random];
+                    colection.RemoveAt(random);
+
+                    perk = GetChancePerk(name);
+
+                    PrintMessage(name, perk);
                 }
                 else
                 {
                     break;
                 }
             }
-
-            PrintMessage(name, perk);
         }
 
         private void PrintSplitBaseData(int[] arr)
@@ -196,6 +199,37 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
             }
 
             return speechDecimal;
+        }
+
+        private string GetChancePerk(string name)
+        {
+            string type = "";
+            int bottom = 0;
+            int top = 0;
+
+            switch (name)
+            {
+                case "Magic":
+                    bottom = 6;
+                    top = 12;
+                    break;
+                case "Aura":
+                    top = 6;
+                    break;
+                default:
+                    if (Utilities.GetRandom(0, 101) > Utilities.GetRandom(0, 201))
+                    {
+                        type = Utilities.GetPerk(name);
+                    }
+                    break;
+            }
+
+            if (top != 0)
+            {
+                type = Utilities.GetTypes()[Utilities.GetRandom(bottom, top)];
+            }
+
+            return type;
         }
     }
 }
