@@ -1,22 +1,22 @@
-﻿using CretureRandomness.RandomName;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Copy_CreatureRandomness.Copy_CreatureRandomness;
 
-namespace CretureRandomness
+namespace Copy_CreatureRandomness
 {
     class Program
     {
         static void Main(string[] args)
         {
-            List<IGame> games;
-            
+            List<IEngine> games;
+
             int position = 1;
 
             while (true)
             {
-                games = new List<IGame>(GetGames());
+                games = new List<IEngine>(GetGames());
 
-                PrintElements(position,games);
+                PrintElements(position, games);
 
                 ConsoleKeyInfo input = Console.ReadKey();
                 char result = input.KeyChar;
@@ -34,7 +34,24 @@ namespace CretureRandomness
             }
         }
 
-        static int GetChoiceResult(char result,int position,int maxCount)
+        static List<IEngine> GetGames()
+        {
+            List<IEngine> gameList = new List<IEngine>
+            {
+                new CreatureRandomnessEngine("CreatureRandomness")
+            };
+
+            return gameList;
+        }
+
+        static void PrintElements(int position, List<IEngine> games)
+        {
+            Console.WriteLine($"Items Up - {position - 1}");
+            Console.WriteLine($"{games[position - 1].Name}");
+            Console.WriteLine($"Items Down - {games.Count - position}");
+        }
+
+        static int GetChoiceResult(char result, int position, int maxCount)
         {
             switch (result)
             {
@@ -63,18 +80,7 @@ namespace CretureRandomness
             return position;
         }
 
-        static void RunGameEngine(int position,List<IGame> games)
-        {
-            Console.Clear();
-
-            games[position - 1].RunEngine();
-
-            ConsoleKeyInfo pouse = Console.ReadKey();
-
-            Console.Clear();
-        }
-
-        static void PrintMasage(string masage,char result = ' ')
+        static void PrintMasage(string masage, char result = ' ')
         {
             Utilities.SetColor("Powers");
 
@@ -83,22 +89,15 @@ namespace CretureRandomness
             Utilities.SetColor();
         }
 
-        static List<IGame> GetGames()
+        static void RunGameEngine(int position, List<IEngine> games)
         {
-            List<IGame> gameList = new List<IGame>()
-            {
-                new CreatureRandomnessEngine(),
-                new RandomNameEngine()
-            };
+            Console.Clear();
 
-            return gameList;
-        }
+            games[position - 1].RunEngine();
 
-        static void PrintElements(int position,List<IGame> games)
-        {
-            Console.WriteLine($"Items Up - {position - 1}");
-            Console.WriteLine($"{games[position - 1].Name}");
-            Console.WriteLine($"Items Down - {games.Count - position}");
+            ConsoleKeyInfo pouse = Console.ReadKey();
+
+            Console.Clear();
         }
     }
 }
