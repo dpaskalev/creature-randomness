@@ -14,6 +14,13 @@ namespace Copy_CreatureRandomness.Chanpionship
             GenerateCompedators();
         }
 
+        public void RunResultsLoop()
+        {
+            LoopRound();
+
+            PrintStatiscis(discloified);
+        }
+
         private void GenerateCompedators()
         {
             foreach (string name in Utilities.GetNames())
@@ -22,37 +29,58 @@ namespace Copy_CreatureRandomness.Chanpionship
             }
         }
 
-        private void RunRound()
+        private void LoopRound()
         {
             int random1;
             int random2;
 
-            for (int i = 0; i < compedators.Count - 1; i++)
+            while (compedators.Count > 1)
             {
                 random1 = Utilities.GetRandom(0, compedators.Count);
                 random2 = Utilities.GetRandom(0, compedators.Count);
 
-                PrintMessage($"{compedators[random1].Name} vs {compedators[random2].Name}");
-                PrintMessage($"Choose [1] for the first, [2] for the seccond");
+                if (random1 != random2)
+                {
+                    PrintMessage($"{compedators[random1].Name} vs {compedators[random2].Name}");
+                    PrintMessage($"Choose [1] for the first, [2] for the seccond");
 
-                if (GetChoice() == 1)
-                {
-                    compedators[random1].AddWin();
-                    discloified.Add(compedators[random2]);
-                    compedators.RemoveAt(random2);
+                    int choice = GetChoice();
+
+                    if (choice == 1)
+                    {
+                        compedators[random1].AddWin();
+                        discloified.Add(compedators[random2]);
+                        compedators.RemoveAt(random2);
+                    }
+                    else if (choice == 2)
+                    {
+                        compedators[random2].AddWin();
+                        discloified.Add(compedators[random1]);
+                        compedators.RemoveAt(random1);
+                    }
+                    else
+                    {
+                        PrintMessage("Choose only between 1 & 2 !");
+                    }
                 }
-                else if(GetChoice() == 2)
-                {
-                    compedators[random2].AddWin();
-                    discloified.Add(compedators[random1]);
-                    compedators.RemoveAt(random1);
-                }
+
+                Console.Clear();
             }
+
+            discloified.Add(compedators[0]);
         }
 
         private void PrintMessage(string message)
         {
             Console.WriteLine(message);
+        }
+
+        private void PrintStatiscis(List<Compedator> disquolified)
+        {
+            for (int i = discloified.Count - 1; i >= 0; i--)
+            {
+                PrintMessage($"[{(discloified.Count - i)}] - {discloified[i].Name}: {discloified[i].Wins}");
+            }
         }
 
         private int GetChoice()
@@ -72,11 +100,6 @@ namespace Copy_CreatureRandomness.Chanpionship
                     PrintMessage($"You entered wrong input [{input}], number required!");
                 }
             }
-        }
-
-        private void DesquolifyCompedator()
-        {
-
         }
     }
 }

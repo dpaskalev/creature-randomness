@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Copy_CreatureRandomness.Copy_CreatureRandomness;
+using Copy_CreatureRandomness.Chanpionship;
 
 namespace Copy_CreatureRandomness
 {
@@ -38,7 +39,9 @@ namespace Copy_CreatureRandomness
         {
             List<IEngine> gameList = new List<IEngine>
             {
-                new CreatureRandomnessEngine("CreatureRandomness")
+                new CreatureRandomnessEngine("CreatureRandomness"),
+
+                new ChanpionshipEngine("Championship"),
             };
 
             return gameList;
@@ -82,11 +85,7 @@ namespace Copy_CreatureRandomness
 
         static void PrintMasage(string masage, char result = ' ')
         {
-            Utilities.SetColor("Powers");
-
             Console.WriteLine($"{masage}{result}");
-
-            Utilities.SetColor();
         }
 
         static void RunGameEngine(int position, List<IEngine> games)

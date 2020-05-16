@@ -6,6 +6,8 @@ namespace Copy_CreatureRandomness.Chanpionship
 {
     public class ChanpionshipEngine : IEngine
     {
+        private Chanpionship chanpionship;
+
         public string Name { get; private set; }
 
         public ChanpionshipEngine(string name)
@@ -15,7 +17,9 @@ namespace Copy_CreatureRandomness.Chanpionship
 
         public void RunEngine()
         {
+            chanpionship = new Chanpionship();
 
+            chanpionship.RunResultsLoop();
         }
     }
 }
