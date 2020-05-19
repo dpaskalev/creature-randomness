@@ -96,10 +96,19 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
                     {
                         arr[3] += 30;
                     }
+                    else if (name == "Speech")
+                    {
+                        baseSpeechSkill += 50;
+                    }
 
                     colection.RemoveAt(random);
 
                     perk = GetChancePerk(name);
+
+                    if (perk == "Toth reading")
+                    {
+                        baseSpeechSkill += 100;
+                    }
 
                     stats.Add(new string[] {name, perk});
                 }
