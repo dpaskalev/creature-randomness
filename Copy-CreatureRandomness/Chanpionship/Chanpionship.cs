@@ -43,6 +43,7 @@ namespace Copy_CreatureRandomness.Chanpionship
                 {
                     PrintMessage($"{compedators[random1].Name} vs {compedators[random2].Name}");
                     PrintMessage($"Choose [1] for the first, [2] for the seccond");
+                    PrintMessage($"Count: {compedators.Count}");
 
                     int choice = GetChoice();
 
