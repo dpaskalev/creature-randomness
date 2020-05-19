@@ -13,6 +13,8 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
         private readonly int[] arr = new int[6];
         private double baseSpeechSkill = 0;
         private int speechDecimal = 4;
+        private List<string[]> powers = new List<string[]>();
+        private List<string[]> skills = new List<string[]>();
 
         public Creature()
         {
@@ -24,6 +26,9 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
 
             baseSpeechSkill = Beauty + Smarts;
             speechDecimal = GetSpeechDecimal(speechDecimal);
+
+            AddChance(new List<string>(Utilities.GetPowers()), powers);
+            AddChance(new List<string>(Utilities.GetSkills()), skills);
         }
 
         public void PrintData()
@@ -32,19 +37,7 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
             PrintMessage("Smarts", Smarts.ToString(),Utilities.Getmark(4, Smarts));
             PrintMessage("Phisics", Phisics.ToString(),Utilities.Getmark(7, Phisics));
 
-            Console.WriteLine();
-            PrintSplitBaseData(arr);
-
-            Console.WriteLine();
-            PrintMessage("Powers");
-            PrintChance(new List<string>(Utilities.GetPowers()));
-
-            Console.WriteLine();
-            PrintMessage("Skills");
-            PrintChance(new List<string>(Utilities.GetSkills()));
-
-            Console.WriteLine();
-            PrintMessage("Base speech skill", $"{(baseSpeechSkill / speechDecimal):f2}");
+            PrintAllData(arr);
         }
 
         public void PrintMessage(string name, string level = "", string mark = "", string perk1 = "", string perk2 = "")
@@ -83,7 +76,7 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
             return random;
         }
 
-        private void PrintChance(List<string> colection)
+        private void AddChance(List<string> colection,List<string[]> stats)
         {
             string name = "";
             string perk = "";
@@ -98,11 +91,17 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
 
                     random = Utilities.GetRandom(0, colection.Count);
                     name = colection[random];
+
+                    if (name == "Marcial arts" || name == "Archery")
+                    {
+                        arr[3] += 30;
+                    }
+
                     colection.RemoveAt(random);
 
                     perk = GetChancePerk(name);
 
-                    PrintMessage(name, perk);
+                    stats.Add(new string[] {name, perk});
                 }
                 else
                 {
@@ -111,12 +110,30 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
             }
         }
 
-        private void PrintSplitBaseData(int[] arr)
+        private void PrintAllData(int[] arr)
         {
+            Console.WriteLine();
             for (int i = 0; i < arr.Length; i++)
             {
                 PrintMessage(Utilities.GetBaseSplit(i), arr[i].ToString());
             }
+
+            Console.WriteLine();
+            PrintMessage("Powers");
+            for (int i = 0; i < powers.Count; i++)
+            {
+                PrintMessage(powers[i][0],powers[i][1]);
+            }
+
+            Console.WriteLine();
+            PrintMessage("Skills");
+            for (int i = 0; i < skills.Count; i++)
+            {
+                PrintMessage(skills[i][0], skills[i][1]);
+            }
+
+            Console.WriteLine();
+            PrintMessage("Base speech skill", $"{(baseSpeechSkill / speechDecimal):f2}");
         }
 
         private int[] GetSettedArray(int[] arr,int Smarts)
