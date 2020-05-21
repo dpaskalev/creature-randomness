@@ -92,23 +92,13 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
                     random = Utilities.GetRandom(0, colection.Count);
                     name = colection[random];
 
-                    if (name == "Marcial arts" || name == "Archery")
-                    {
-                        arr[3] += 30;
-                    }
-                    else if (name == "Speech")
-                    {
-                        baseSpeechSkill += 50;
-                    }
+                    ArrayBuffer(name);
 
                     colection.RemoveAt(random);
 
                     perk = GetChancePerk(name);
 
-                    if (perk == "Toth reading")
-                    {
-                        baseSpeechSkill += 100;
-                    }
+                    ArrayBuffer("",perk);
 
                     stats.Add(new string[] {name, perk});
                 }
@@ -116,6 +106,32 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
                 {
                     break;
                 }
+            }
+        }
+
+        private void ArrayBuffer(string name = "", string perk = "")
+        {
+            if (name == "Marcial arts")
+            {
+                arr[4] += 30;
+            }
+            if (name == "Marcial arts" || name == "Archery")
+            {
+                arr[3] += 30;
+            }
+            else if (name == "Speech")
+            {
+                arr[0] += 30;
+                baseSpeechSkill += 50;
+            }
+            else if (name == "Smithing")
+            {
+                arr[1] += 30;
+            }
+
+            if (perk == "Toth reading")
+            {
+                baseSpeechSkill += 100;
             }
         }
 
