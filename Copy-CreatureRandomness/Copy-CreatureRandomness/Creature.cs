@@ -26,6 +26,7 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
 
             baseSpeechSkill = Beauty + Smarts;
             speechDecimal = GetSpeechDecimal(speechDecimal);
+            baseSpeechSkill = GetSettedBaseSpeechSkill(baseSpeechSkill, speechDecimal);
 
             AddChance(new List<string>(Utilities.GetPowers()), powers);
             AddChance(new List<string>(Utilities.GetSkills()), skills);
@@ -158,7 +159,7 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
             }
 
             Console.WriteLine();
-            PrintMessage("Base speech skill", $"{(baseSpeechSkill / speechDecimal):f2}");
+            PrintMessage("Base speech skill", $"{baseSpeechSkill:f2}");
         }
 
         private int[] GetSettedArray(int[] arr,int Smarts)
@@ -272,6 +273,11 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
             }
 
             return type;
+        }
+
+        private double GetSettedBaseSpeechSkill(double baseSpeechSkill, int speechDecimal)
+        {
+            return baseSpeechSkill / speechDecimal;
         }
     }
 }
