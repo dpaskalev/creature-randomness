@@ -92,7 +92,7 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
             { "Regeneration","Stamina recovery"},
             { "Fire bending","Explosions"},
             { "Water bending","Blood bending"},
-            { "Earth bending","Metal bending"},
+            { "Earth bending","Lava bending"},
             { "Air bending","Become enterial"},
             { "Aura",""},
             { "Magic",""},
