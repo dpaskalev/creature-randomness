@@ -82,7 +82,7 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
             string name = "";
             string perk = "";
             int random = 0;
-            int denial = 101;
+            int denial = 151;
 
             while (colection.Count > 0)
             {
@@ -114,20 +114,20 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
         {
             if (name == "Marcial arts")
             {
-                arr[4] += 30;
+                arr[5] += 30;
             }
             if (name == "Marcial arts" || name == "Archery")
             {
-                arr[3] += 30;
+                arr[4] += 30;
             }
             else if (name == "Speech")
             {
-                arr[0] += 30;
+                arr[2] += 30;
                 baseSpeechSkill += 50;
             }
             else if (name == "Smithing")
             {
-                arr[1] += 30;
+                arr[0] += 30;
             }
 
             if (perk == "Toth reading")
@@ -168,7 +168,7 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
 
             for (int i = 0; i < arr.Length; i++)
             {
-                arr[i] = Utilities.GetRandom(0, max);
+                arr[i] = Utilities.GetRandom(0, max / 2);
 
                 max -= arr[i];
 
@@ -202,28 +202,12 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
                 }
             }
 
-            int value = GetMax(max);
+            int value = max / 2;
 
             arr[index1] += value;
             arr[index2] += (max - value);
 
             return arr;
-        }
-
-        private int GetMax(int max)
-        {
-            int value;
-
-            if (max % 2 != 0)
-            {
-                value = max / 2 + 1;
-            }
-            else
-            {
-                value = max / 2;
-            }
-
-            return value;
         }
 
         private int GetSpeechDecimal(int speechDecimal)

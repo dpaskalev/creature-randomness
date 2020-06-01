@@ -10,12 +10,12 @@ namespace Copy_CreatureRandomness.Chanpionship
         {
             "Asreil",
             "Cattra",
-            "Chara",
-            "Hisoka",
-            "Jax",
-            "Neferpitho",
-            "Warword",
-            "Zack",
+            "Neferphito",
+            "Electro",
+            "Todoroki",
+            "097",
+            "Destony",
+            "Alexia",
         };
 
         public static List<string> GetNames()

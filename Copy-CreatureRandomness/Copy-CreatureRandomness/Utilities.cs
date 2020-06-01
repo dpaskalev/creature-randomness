@@ -25,12 +25,12 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
 
         private static readonly List<string> baseDataSplit = new List<string>
         {
-            "Observation",
-            "Memory span",
+            "Short term memory",
             "Study speed",
+            "Observation",
+            "Strenght",
             "Reflexes",
             "Speed",
-            "Strenght",
         };
 
         private static readonly List<string> skills = new List<string>
