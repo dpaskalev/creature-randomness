@@ -18,16 +18,13 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
             /*7*/"Weak",
                  "Fit",
                  "Strong",
-            /*10*/"Bad",
-                 "Good",
-                 "Master"
         };
 
         private static readonly List<string> baseDataSplit = new List<string>
         {
-            "Short term memory",
+            "Memory",
             "Study speed",
-            "Observation",
+            "Logic",
             "Strenght",
             "Reflexes",
             "Speed",
@@ -85,7 +82,7 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
             { "War Axe","Lifesteal"},
             { "Two edged sword","Damage return"},
             { "Staff","Stun"},
-            { "Spear","Overhit"},
+            { "Spear","Enfeeble"},
             { "Archery","Detect life"},
             { "Speech","Toth reading"},
             //

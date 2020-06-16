@@ -114,25 +114,26 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
         {
             if (name == "Marcial arts")
             {
-                arr[5] += 30;
+                arr[5] += 10;
+                arr[3] += 5;
             }
             if (name == "Marcial arts" || name == "Archery")
             {
-                arr[4] += 30;
+                arr[4] += 10;
             }
             else if (name == "Speech")
             {
-                arr[2] += 30;
-                baseSpeechSkill += 50;
+                arr[2] += 10;
+                baseSpeechSkill += 30;
             }
             else if (name == "Smithing")
             {
-                arr[0] += 30;
+                arr[0] += 10;
             }
 
             if (perk == "Toth reading")
             {
-                baseSpeechSkill += 100;
+                baseSpeechSkill += 50;
             }
         }
 
