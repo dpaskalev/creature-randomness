@@ -25,11 +25,12 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
             arr = GetSettedArray(arr, Smarts);
 
             baseSpeechSkill = Beauty + Smarts;
-            speechDecimal = GetSpeechDecimal(speechDecimal);
-            baseSpeechSkill = GetSettedBaseSpeechSkill(baseSpeechSkill, speechDecimal);
 
             AddChance(new List<string>(Utilities.GetPowers()), powers);
             AddChance(new List<string>(Utilities.GetSkills()), skills);
+
+            speechDecimal = GetSpeechDecimal(speechDecimal);
+            baseSpeechSkill = GetSettedBaseSpeechSkill(baseSpeechSkill, speechDecimal);
         }
 
         public void PrintData()
