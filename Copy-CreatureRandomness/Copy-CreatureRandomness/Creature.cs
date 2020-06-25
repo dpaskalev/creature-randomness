@@ -213,15 +213,15 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
 
         private int GetSpeechDecimal(int speechDecimal)
         {
-            if (Smarts > 90)
+            if (arr[2] > 49)
             {
                 speechDecimal = 1;
             }
-            else if (Smarts > 70)
+            else if (arr[2] > 44)
             {
                 speechDecimal = 2;
             }
-            else if (Smarts > 30)
+            else if (arr[2] > 19)
             {
                 speechDecimal = 3;
             }
