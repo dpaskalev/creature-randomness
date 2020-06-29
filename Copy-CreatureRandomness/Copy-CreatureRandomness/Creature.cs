@@ -13,6 +13,7 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
         private readonly int[] arr = new int[6];
         private double baseSpeechSkill = 0;
         private int speechDecimal = 4;
+        private int speechBuff = 0;
         private List<string[]> powers = new List<string[]>();
         private List<string[]> skills = new List<string[]>();
 
@@ -125,7 +126,7 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
             else if (name == "Speech")
             {
                 arr[2] += 10;
-                baseSpeechSkill += 30;
+                speechBuff += 30;
             }
             else if (name == "Smithing")
             {
@@ -263,7 +264,7 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
 
         private double GetSettedBaseSpeechSkill(double baseSpeechSkill, int speechDecimal)
         {
-            return baseSpeechSkill / speechDecimal;
+            return (baseSpeechSkill / speechDecimal) + speechBuff;
         }
     }
 }
