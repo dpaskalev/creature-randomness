@@ -114,12 +114,12 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
 
         private void ArrayBuffer(string name = "", string perk = "")
         {
-            if (name == "Marcial arts")
+            if (name == "Martial arts")
             {
                 arr[5] += 10;
-                arr[3] += 5;
+                arr[3] += 10;
             }
-            if (name == "Marcial arts" || name == "Archery")
+            if (name == "Martial arts" || name == "Archery")
             {
                 arr[4] += 10;
             }

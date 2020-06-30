@@ -34,7 +34,7 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
         {
             "Sneak",
             "Smithing",
-            "Marcial arts",
+            "Martial arts",
             "Chain sythe",
             "War hammer",
             "Mase",
@@ -72,7 +72,7 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
         {
             { "Sneak","Invisibility"},
             { "Smithing","Alien technology"},
-            { "Marcial arts","Paralisis"},
+            { "Martial arts","Paralisis"},
             { "Chain sythe","Flash"},
             { "War hammer","I burn"},
             { "Mase","Beserker's rage"},
