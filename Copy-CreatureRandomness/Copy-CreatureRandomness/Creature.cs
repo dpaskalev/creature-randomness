@@ -95,13 +95,11 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
                     random = Utilities.GetRandom(0, colection.Count);
                     name = colection[random];
 
-                    ArrayBuffer(name);
-
-                    colection.RemoveAt(random);
-
                     perk = GetChancePerk(name);
 
-                    ArrayBuffer("",perk);
+                    ArrayBuffer(name, perk);
+
+                    colection.RemoveAt(random);
 
                     stats.Add(new string[] {name, perk});
                 }
@@ -135,7 +133,21 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
 
             if (perk == "Toth reading")
             {
+                arr[2] += 10;
                 baseSpeechSkill += 50;
+            }
+            if (perk == "Paralisis" || perk == "Detect life")
+            {
+                arr[0] += 10;
+            }
+            else if (perk == "Paralisis")
+            {
+                arr[5] += 10;
+                arr[3] += 10;
+            }
+            else if (perk == "Alien technology")
+            {
+                arr[0] += 10;
             }
         }
 

@@ -52,7 +52,6 @@ namespace Copy_CreatureRandomness
             Console.WriteLine($"Items Up - {position - 1}");
             Console.WriteLine($"{games[position - 1].Name}");
             Console.WriteLine($"Items Down - {games.Count - position}");
-            Console.WriteLine(new Random().Next(1,178));
         }
 
         static int GetChoiceResult(char result, int position, int maxCount)
