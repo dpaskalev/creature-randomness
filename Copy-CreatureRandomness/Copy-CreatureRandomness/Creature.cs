@@ -130,6 +130,10 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
             {
                 arr[0] += 10;
             }
+            else if (name == "Sneak")
+            {
+                arr[5] += 10;
+            }
 
             if (perk == "Toth reading")
             {
