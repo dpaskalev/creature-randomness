@@ -13,7 +13,6 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
         private readonly int[] arr = new int[6];
         private double baseSpeechSkill = 0;
         private int speechDecimal = 4;
-        private int speechBuff = 0;
         private List<string[]> powers = new List<string[]>();
         private List<string[]> skills = new List<string[]>();
 
@@ -97,7 +96,7 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
 
                     perk = GetChancePerk(name);
 
-                    ArrayBuffer(name, perk);
+                    ArrayBuffer(name);
 
                     colection.RemoveAt(random);
 
@@ -110,35 +109,30 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
             }
         }
 
-        private void ArrayBuffer(string name = "", string perk = "")
+        private void ArrayBuffer(string name = "")
         {
             if (name == "Martial arts")
             {
+                arr[3] += 5;
+                arr[4] += 5;
                 arr[5] += 10;
-                arr[3] += 10;
             }
-            if (name == "Martial arts" || name == "Archery")
+            else if (name == "Archery")
             {
-                arr[4] += 10;
+                arr[4] += 20;
             }
             else if (name == "Speech")
             {
-                arr[2] += 10;
-                speechBuff += 30;
+                arr[2] += 20;
             }
             else if (name == "Smithing")
             {
                 arr[0] += 10;
+                arr[3] += 10;
             }
             else if (name == "Sneak")
             {
-                arr[5] += 10;
-            }
-
-            if (perk == "Toth reading")
-            {
-                arr[2] += 10;
-                baseSpeechSkill += 50;
+                arr[5] += 20;
             }
         }
 
@@ -267,7 +261,7 @@ namespace Copy_CreatureRandomness.Copy_CreatureRandomness
 
         private double GetSettedBaseSpeechSkill(double baseSpeechSkill, int speechDecimal)
         {
-            return (baseSpeechSkill / speechDecimal) + speechBuff;
+            return (baseSpeechSkill / speechDecimal);
         }
     }
 }
